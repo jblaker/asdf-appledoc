@@ -31,7 +31,6 @@ list_github_tags() {
 }
 
 list_all_versions() {
-	# TODO: Adapt this. By default we simply list the tag names from GitHub releases.
 	# Change this function if <YOUR TOOL> has other means of determining installable versions.
 	list_github_tags
 }
@@ -41,12 +40,13 @@ download_release() {
 	version="$1"
 	filename="$2"
 
-	# TODO: Adapt the release URL convention for <YOUR TOOL>
 	# https://github.com/tomaz/appledoc/releases/download/2.2.1/appledoc-2.2.1.zip
 	url="$GH_REPO/releases/download/${version}/appledoc-${version}.zip"
 
 	echo "* Downloading $TOOL_NAME release $version..."
 	curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
+
+	sudo sh install-appledoc.sh
 }
 
 install_version() {
@@ -62,7 +62,6 @@ install_version() {
 		mkdir -p "$install_path"
 		cp -r "$ASDF_DOWNLOAD_PATH"/* "$install_path"
 
-		# TODO: Assert <YOUR TOOL> executable exists.
 		local tool_cmd
 		tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
 		test -x "$install_path/$tool_cmd" || fail "Expected $install_path/$tool_cmd to be executable."
