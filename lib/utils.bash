@@ -48,7 +48,7 @@ download_release() {
 
 	unzip $filename
 
-	cd "appledoc-${version}"
+	cd "appledoc"
 
 	sudo sh install-appledoc.sh
 }
