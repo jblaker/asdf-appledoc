@@ -47,10 +47,6 @@ download_release() {
 	curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
 
 	unzip $filename
-
-	cd "appledoc"
-
-	sudo sh install-appledoc.sh
 }
 
 install_version() {
