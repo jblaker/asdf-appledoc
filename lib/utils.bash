@@ -46,7 +46,7 @@ download_release() {
 	echo "* Downloading $TOOL_NAME release $version..."
 	curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
 
-	unzip $filename
+	unzip "$filename"
 
 	cd appledoc
 	cp -Rf Templates/ ~/.appledoc
