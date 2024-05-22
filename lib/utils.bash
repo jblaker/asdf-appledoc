@@ -45,6 +45,12 @@ download_release() {
 
 	echo "* Downloading $TOOL_NAME release $version..."
 	curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
+
+	unzip $filename
+
+	cd "appledoc-${version}"
+
+	sudo sh install-appledoc.sh
 }
 
 install_version() {
