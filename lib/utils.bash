@@ -40,7 +40,8 @@ download_release() {
 	version="$1"
 	filename="$2"
 
-	url="https://solutions.brightcove.com/jblaker/appledoc-${version}.zip"
+	# https://github.com/tomaz/appledoc/releases/download/2.2.1/appledoc-2.2.1.zip
+	url="$GH_REPO/releases/download/${version}/appledoc-${version}.zip"
 
 	echo "* Downloading $TOOL_NAME release $version..."
 	curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
